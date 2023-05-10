@@ -313,7 +313,6 @@ pub fn draw_text_ex(text: &str, x: f32, y: f32, params: TextParams) {
     let dpi_scaling = get_quad_context().dpi_scale();
 
     let font_size = (params.font_size as f32 * dpi_scaling).ceil() as u16;
-    let font_height = params.font_size as f32 * dpi_scaling * font_scale_y;
 
     let mut total_width = 0.;
     for character in text.chars() {
