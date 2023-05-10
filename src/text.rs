@@ -339,6 +339,8 @@ pub fn draw_text_ex(text: &str, x: f32, y: f32, params: TextParams) {
             glyph.h as f32 / dpi_scaling as f32 * font_scale_y,
         );
 
+        println!("{} {:?} {:?}", text, (x, y), dest);
+
         let source = Rect::new(
             glyph.x as f32,
             glyph.y as f32,
