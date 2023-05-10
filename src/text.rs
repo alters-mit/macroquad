@@ -313,6 +313,7 @@ pub fn draw_text_ex(text: &str, x: f32, y: f32, params: TextParams) {
     let dpi_scaling = get_quad_context().dpi_scale();
 
     let font_size = (params.font_size as f32 * dpi_scaling).ceil() as u16;
+    let font_height = params.font_size as f32 * dpi_scaling * font_scale_y;
 
     let mut total_width = 0.;
     for character in text.chars() {
@@ -324,7 +325,7 @@ pub fn draw_text_ex(text: &str, x: f32, y: f32, params: TextParams) {
         let glyph = atlas.get(font_data.sprite).unwrap().rect;
         let angle_rad = params.rotation;
         let left_coord = (font_data.offset_x as f32 * font_scale_x + total_width) * angle_rad.cos()
-            + (glyph.h as f32 * font_scale_y + font_data.offset_y as f32 * font_scale_y)
+            + (font_height + font_data.offset_y as f32 * font_scale_y)
                 * angle_rad.sin();
         let top_coord = (font_data.offset_x as f32 * font_scale_x + total_width) * angle_rad.sin()
             + (0.0 - glyph.h as f32 * font_scale_y - font_data.offset_y as f32 * font_scale_y)
