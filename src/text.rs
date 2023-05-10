@@ -306,6 +306,7 @@ pub fn draw_text(text: &str, x: f32, y: f32, font_size: f32, color: Color) {
 
 /// Draw text with custom params such as font, font size and font scale.
 pub fn draw_text_ex(text: &str, x: f32, y: f32, params: TextParams) {
+    println!("here");
     let font = get_context().fonts_storage.get_font_mut(params.font);
 
     let font_scale_x = params.font_scale * params.font_scale_aspect;
