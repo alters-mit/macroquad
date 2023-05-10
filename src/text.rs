@@ -334,7 +334,7 @@ pub fn draw_text_ex(text: &str, x: f32, y: f32, params: TextParams) {
 
         let dest = Rect::new(
             left_coord / dpi_scaling as f32 + x,
-            top_coord / dpi_scaling as f32 + y * 2.0,
+            top_coord / dpi_scaling as f32 + y,
             glyph.w as f32 / dpi_scaling as f32 * font_scale_x,
             glyph.h as f32 / dpi_scaling as f32 * font_scale_y,
         );
@@ -355,7 +355,7 @@ pub fn draw_text_ex(text: &str, x: f32, y: f32, params: TextParams) {
                 dest_size: Some(vec2(dest.w, dest.h)),
                 source: Some(source),
                 rotation: angle_rad,
-                pivot: Option::Some(vec2(dest.x, dest.y)),
+                pivot: Option::Some(vec2(x, y)),
                 ..Default::default()
             },
         );
