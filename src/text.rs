@@ -306,7 +306,6 @@ pub fn draw_text(text: &str, x: f32, y: f32, font_size: f32, color: Color) {
 
 /// Draw text with custom params such as font, font size and font scale.
 pub fn draw_text_ex(text: &str, x: f32, y: f32, params: TextParams) {
-    println!("here");
     let font = get_context().fonts_storage.get_font_mut(params.font);
 
     let font_scale_x = params.font_scale * params.font_scale_aspect;
@@ -328,7 +327,7 @@ pub fn draw_text_ex(text: &str, x: f32, y: f32, params: TextParams) {
             + (glyph.h as f32 * font_scale_y + font_data.offset_y as f32 * font_scale_y)
                 * angle_rad.sin();
         let top_coord = (font_data.offset_x as f32 * font_scale_x + total_width) * angle_rad.sin()
-            + (0.0 - glyph.h as f32 * font_scale_y - font_data.offset_y as f32 * font_scale_y)
+            + (0.0 - glyph.h as f32 * font_scale_y)
                 * angle_rad.cos();
 
         total_width += font_data.advance * font_scale_x;
@@ -339,8 +338,6 @@ pub fn draw_text_ex(text: &str, x: f32, y: f32, params: TextParams) {
             glyph.w as f32 / dpi_scaling as f32 * font_scale_x,
             glyph.h as f32 / dpi_scaling as f32 * font_scale_y,
         );
-
-        println!("{} {:?} {:?}", text, (x, y), dest);
 
         let source = Rect::new(
             glyph.x as f32,
